@@ -66,7 +66,7 @@ export default {
                 },
                 {
                     subTitle: "Nature's Essence",
-                    title: "BeYou <br> Spray",
+                    title: "BeYou <br> Face mist",
                     backgroundImage: "/img/slider/3.jpg"
                 },
                 {

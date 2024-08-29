@@ -64,6 +64,9 @@
 
 <script>
     export default {
+        async asyncData({ store }) {
+            await store.dispatch('fetchProducts');
+        },
         components: {
             HeaderWithTopbar: () => import('@/components/HeaderWithTopbar'),
             Breadcrumb: () => import('@/components/Breadcrumb'),

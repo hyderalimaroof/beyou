@@ -47,6 +47,9 @@
 
 <script>
     export default {
+        async asyncData({ store }) {
+            await store.dispatch('fetchProducts');
+        },
         components: {
             ProductGridItemTwo: () => import('@/components/product/ProductGridItemTwo'),
             QuickView: () => import('@/components/QuickView'),
