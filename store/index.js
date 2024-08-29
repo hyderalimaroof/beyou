@@ -157,7 +157,7 @@ export const actions = {
 
     async fetchProducts({ commit }) {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/products/');
+            const response = await axios.get('https://api.beyou.com.pk/api/products/');
             commit('SET_PRODUCTS', response.data);
         } catch (error) {
             console.error('An error occurred while fetching products:', error);
@@ -194,7 +194,7 @@ export const actions = {
 
     async placeOrder({ commit }, orderData) {
         try {
-            const response = await axios.post('http://127.0.0.1:8000/orders/', orderData);
+            const response = await axios.post('https://api.beyou.com.pk/orders/', orderData);
             if (response.status === 200 || response.status === 201) {
                 // Update quantities in the store
                 const updatedQuantities = orderData.items.map(item => ({

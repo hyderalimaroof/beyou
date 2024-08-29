@@ -112,7 +112,7 @@ export default {
   methods: {
     async sendEmail() {
       try {
-        const response = await axios.post('http://127.0.0.1:8000/api/send-email/', {
+        const response = await axios.post('https://api.beyou.com.pk/api/send-email/', {
           name: this.name,
           email: this.email,
           subject: this.subject,
