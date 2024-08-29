@@ -16,7 +16,7 @@
                 <div class="menu-navigation">
                     <ResponsiveMobileMenu />
                 </div>
-                <div class="offcanvas-tools">
+                <!-- <div class="offcanvas-tools">
                     <div class="same-language-currency">
                         <span>Choose Language</span>
                         <select name="language">
@@ -45,7 +45,7 @@
                             <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
             </div>
         </div>
