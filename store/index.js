@@ -49,7 +49,7 @@ export const getters = {
     getTotal(state) {
         let total = 0;
         state.cart.forEach(item => {
-            let price = item.discount ? item.price - (item.price * (item.discount) / 100) : item.price;
+            let price = item.discount ? item.price - (item.price * (item.discount) / 100).toFixed(2) : item.price;
             total += price * item.cartQuantity;
         });
         return total;
@@ -192,7 +192,7 @@ export const actions = {
         commit('REMOVE_FROM_COMPARE', product);
     },
 
-    async placeOrder({ commit }, orderData) {
+    async placeOrder({ commit, dispatch }, orderData) {
         try {
             const response = await axios.post('https://api.beyou.com.pk/orders/', orderData);
             if (response.status === 200 || response.status === 201) {
@@ -205,7 +205,7 @@ export const actions = {
 
                 // Clear the cart
                 commit('CLEAR_CART');
-
+                dispatch("fetchProducts")
                 return response;
             }
         } catch (error) {

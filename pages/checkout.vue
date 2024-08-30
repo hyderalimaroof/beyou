@@ -340,7 +340,7 @@ export default {
         },
         discountedPrice(product) {
             if (product.discount) {
-                return product.price - (product.price * product.discount / 100)
+                return product.price - (product.price * product.discount / 100).toFixed(2)
             }
             else {
                 return product.price

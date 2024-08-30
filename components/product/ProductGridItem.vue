@@ -6,8 +6,8 @@
                 <img class="hover-img" :src="product.images[1].image" :alt="product.title">
             </n-link>
             <div class="product-badges">
-                <span class="product-label pink" v-if="product.new">New</span>
-                <span class="product-label purple" v-if="product.discount & product.quantity >= 0">-{{ product.discount
+                <span class="product-label pink" v-if="product.new & product.quantity > 0">New</span>
+                <span class="product-label purple" v-if="product.discount & product.quantity > 0">-{{ product.discount
                     }}%</span>
                 <span class="product-label purple" v-if="product.quantity <= 0">Sold Out</span>
             </div>
@@ -125,7 +125,7 @@ export default {
         },
 
         discountedPrice(product) {
-            return product.price - (product.price * product.discount / 100)
+            return product.price - (product.price * product.discount / 100).toFixed(2)
         },
 
         addToWishlist(product) {
