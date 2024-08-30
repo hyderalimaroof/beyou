@@ -151,10 +151,6 @@ export const mutations = {
 
 // Actions
 export const actions = {
-    async nuxtServerInit({ dispatch }) {
-        await dispatch('fetchProducts');
-    },
-
     async fetchProducts({ commit }) {
         try {
             const response = await axios.get('https://api.beyou.com.pk/api/products/');
