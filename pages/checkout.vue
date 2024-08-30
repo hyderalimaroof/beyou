@@ -140,54 +140,95 @@
         </div>
         <!-- checkout section end -->
         <TheFooter />
-        <modal name="response-modal" height="auto" :draggable="true">
-            <div class="modal-content text-center">
-                <i class="fa" :class="modalIcon" style="font-size: 3rem;"></i>
-                <h3>{{ modalTitle }}</h3>
-                <p>{{ modalMessage }}</p>
-                <p v-if="redirectCountdown > 0">
+        <modal name="response-modal" height="auto" :width="'90%'" :draggable="false" :resizable="false"
+            :clickToClose="false" :scrollable="true" :adaptive="true" :classes="['custom-modal']">
+            <div class="modal-content">
+                <i :class="['fa', modalIcon, 'modal-icon']"></i>
+                <h3 class="modal-title">{{ modalTitle }}</h3>
+                <p class="modal-message">{{ modalMessage }}</p>
+                <p v-if="redirectCountdown > 0" class="modal-redirect">
                     Redirecting to the shop in {{ redirectCountdown }} seconds...
                 </p>
-                <button @click="continueShopping" class="btn btn-primary mt-3">Continue Shopping</button>
-                <button @click="$modal.hide('response-modal')" class="btn btn-secondary mt-3">Close</button>
+                <div class="modal-buttons">
+                    <button @click="continueShopping" class="btn btn-primary">
+                        Continue Shopping
+                    </button>
+                    <button @click="$modal.hide('response-modal')" class="btn btn-secondary">
+                        Close
+                    </button>
+                </div>
             </div>
         </modal>
     </div>
 </template>
 
 <style scoped>
-.modal-content {
-    padding: 20px;
-    max-width: 100%;
-    width: 100%;
-    box-sizing: border-box;
+.custom-modal .modal-content {
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 8px;
 }
 
-.modal-content h3 {
-    font-size: 1.5rem;
-    margin: 20px 0;
+.modal-icon {
+  font-size: 3rem;
+  color: #28a745; /* Success color */
+  margin-bottom: 15px;
 }
 
-.modal-content p {
-    font-size: 1rem;
-    margin: 10px 0;
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
 }
 
-.modal-content button {
-    width: 100%;
-    margin-top: 10px;
+.modal-message {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
 }
 
-@media (min-width: 768px) {
-    .modal-content {
-        max-width: 500px;
-        margin: 0 auto;
-    }
+.modal-redirect {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 20px;
+}
 
-    .modal-content button {
-        width: auto;
-        margin: 10px 5px;
-    }
+.modal-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-buttons .btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+}
+
+.modal-buttons .btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.modal-buttons .btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+@media (min-width: 600px) {
+  .modal-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .modal-buttons .btn {
+    width: auto;
+    min-width: 120px;
+  }
 }
 </style>
 
@@ -201,10 +242,10 @@ export default {
     data() {
         return {
             errors: {},
-            modalIcon: '', 
-            modalTitle: '', 
-            modalMessage: '', 
-            redirectCountdown: 10, 
+            modalIcon: '',
+            modalTitle: '',
+            modalMessage: '',
+            redirectCountdown: 10,
             countdownInterval: null,
             billingDetails: {
                 firstName: '',
